@@ -249,7 +249,7 @@ namespace videocore { namespace Apple {
         }
         
         if(err == noErr) {
-            CFStringRef profileLevel = kVTProfileLevel_H264_Baseline_AutoLevel; //useBaseline ? kVTProfileLevel_H264_Baseline_AutoLevel : kVTProfileLevel_H264_Main_AutoLevel;
+            CFStringRef profileLevel = kVTProfileLevel_H264_Baseline_3_1; //useBaseline ? kVTProfileLevel_H264_Baseline_AutoLevel : kVTProfileLevel_H264_Main_AutoLevel;
             err = VTSessionSetProperty(session, kVTCompressionPropertyKey_ProfileLevel, profileLevel);
         }
         if(!useBaseline) {

@@ -42,7 +42,8 @@ namespace videocore { namespace rtmp {
 
         outBuffer.clear();
 
-        int flvStereoOrMono = (m_channelCount == 2 ? FLV_STEREO : FLV_MONO);
+        //int flvStereoOrMono = (m_channelCount == 2 ? FLV_STEREO : FLV_MONO);
+        int flvStereoOrMono = FLV_MONO;
         int flvSampleRate = FLV_SAMPLERATE_44100HZ; // default
         if (m_sampleRate == 22050.0) {
             flvSampleRate = FLV_SAMPLERATE_22050HZ;

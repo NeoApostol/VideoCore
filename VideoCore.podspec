@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name                = "VideoCore"
   s.module_name         = "VideoCore"
-  s.version             = “0.3.3”
+  s.version             = "0.3.2"
   s.summary             = "An audio and video manipulation and streaming pipeline with support for RTMP."
   s.description      = <<-DESC
                           This is a work-in-progress library with the
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.dependency          'glm'
   s.dependency          'UriParser-cpp', '~> 0.1.3'
   
-  s.xcconfig            = { "HEADER_SEARCH_PATHS" => "${PODS_ROOT}/boost" }
+  
 
   s.ios.deployment_target = '5.0'
 

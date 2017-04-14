@@ -29,7 +29,7 @@
 #include <videocore/stream/IStreamSession.hpp>
 #include <videocore/stream/TCPThroughputAdaptation.h>
 
-#include <UriParser/UriParser.hpp>
+#include <videocore/system/UriParser.hpp>
 
 #include <functional>
 #include <deque>

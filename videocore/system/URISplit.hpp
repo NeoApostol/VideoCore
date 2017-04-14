@@ -13,7 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <UriParser/UriParser.hpp>
+#include <videocore/system/UriParser.hpp>
 
 class URISplit {
 

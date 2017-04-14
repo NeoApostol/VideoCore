@@ -33,10 +33,7 @@ Pod::Spec.new do |s|
   s.libraries           = 'c++'
 
   s.dependency          'glm'
-  s.dependency          'UriParser-cpp', '~> 0.1.3'
   
-  
-
   s.ios.deployment_target = '5.0'
 
   # Before we can get OS X deployment working, we'll need to use sub-specs to

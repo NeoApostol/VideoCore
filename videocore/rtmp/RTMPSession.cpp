@@ -32,8 +32,8 @@
 #define DLOG_LEVEL_DEF DLOG_LEVEL_VERBOSE
 #endif
 #include <videocore/system/Logger.hpp>
+#include <videocore/system/URISplit.hpp>
 
-#include <boost/tokenizer.hpp>
 #include <stdlib.h>
 #include <algorithm>
 #include <sstream>
@@ -66,27 +66,33 @@ namespace videocore
         m_streamSession.reset(new Apple::StreamSession());
         m_networkWaitSemaphore = dispatch_semaphore_create(0);
 #endif
-        boost::char_separator<char> sep("/");
-        boost::tokenizer<boost::char_separator<char>> uri_tokens(uri, sep);
+        URISplit split = URISplit();
+        split.Str2Arr(uri, "/");
         
-        // http::ParseHttpUrl is destructive to the parameter passed in.
-        std::string uri_cpy(uri);
-        m_uri = http::ParseHttpUrl(uri_cpy);
-        boost::tokenizer<boost::char_separator<char> > tokens(m_uri.path, sep );
+        std::vector<std::string> str = split.Str2Arr(uri, "/");
         
         
         int tokenCount = 0;
         std::stringstream pp;
-        for ( auto it = uri_tokens.begin() ; it != uri_tokens.end() ; ++it) {
+        
+        std::string uri_cpy(uri);
+        m_uri = http::ParseHttpUrl(uri_cpy);
+        
+        for(std::vector<std::string>::iterator it = str.begin(); it != str.end(); ++it) {
+            std::cout << "FOR=> " << *it << std::endl;
+            
             if(tokenCount++ < 2) { // skip protocol and host/port
                 continue;
             }
+            
             if(tokenCount == 3) {
                 m_app = *it;
-            } else {
+            }else {
                 pp << *it << "/";
             }
+            
         }
+        
         m_playPath = pp.str();
         m_playPath.pop_back();
         
